@@ -3,10 +3,7 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-
-  // IMPORTANT: safe for Vercel SPA hosting
   base: '/',
-
   server: {
     port: 3001,
     host: true,
@@ -17,9 +14,8 @@ export default defineConfig({
       }
     }
   },
-
   build: {
     outDir: 'dist',
-    sourcemap: false, // IMPORTANT: disable for production (faster + safer)
-  }
+    sourcemap: true,
+  },
 })
