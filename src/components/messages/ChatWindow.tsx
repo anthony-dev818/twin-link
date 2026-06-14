@@ -156,7 +156,7 @@ export default function ChatWindow() {
   }
 
   return (
-    <div className="h-full flex flex-col bg-dark">
+    <div className="h-[100dvh] flex flex-col bg-dark">
       {/* Chat Header */}
       <div className="flex items-center gap-3 p-3 border-b border-white/5 bg-dark-card/50 backdrop-blur-sm">
         <button
@@ -211,7 +211,7 @@ export default function ChatWindow() {
       <div
         ref={scrollRef}
         onScroll={handleScroll}
-        className="flex-1 overflow-y-auto p-4 space-y-3"
+        className="flex-1 overflow-y-auto p-4 space-y-3 pb-24"
       >
         {/* Date separator */}
         <div className="flex items-center justify-center">
@@ -443,7 +443,7 @@ export default function ChatWindow() {
       </AnimatePresence>
 
       {/* Input Area */}
-      <div className="p-3 border-t border-white/5 bg-dark-card/50 backdrop-blur-sm">
+      <div className="p-3 border-t border-white/5 bg-dark-card/50 backdrop-blur-sm sticky bottom-0">
         <div className="flex items-end gap-2">
           {/* Attachment Button */}
           <div className="relative" ref={attachmentRef}>
@@ -541,6 +541,11 @@ export default function ChatWindow() {
                 }
               }}
               onKeyDown={handleKeyDown}
+              onFocus={() => {
+                if (isEditing) {
+                  setEditValue(inputValue);
+                }
+              }}
               placeholder={isEditing ? 'Edit message...' : 'Type a message...'}
               className="w-full bg-dark-surface border border-white/10 rounded-xl px-4 py-3 pr-10
                 text-sm text-white placeholder-white/30 outline-none transition-all
